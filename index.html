@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InvoiceHound — Get Paid Without the Awkward Emails</title>
+  <meta name="description" content="InvoiceHound automatically follows up on unpaid invoices for you — so you get paid without the awkward emails." />
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              900: '#0D1B2A',
+              800: '#112236',
+              700: '#1A3348',
+              600: '#1E3A5F',
+            },
+            brand: {
+              orange: '#FF6B35',
+              'orange-dark': '#E55A24',
+              'orange-light': '#FF8A5C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0D1B2A;
+      color: #FFFFFF;
+    }
+
+    .glow-orange {
+      box-shadow: 0 0 40px rgba(255, 107, 53, 0.25);
+    }
+
+    .step-line::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -2rem;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 2rem;
+      background: linear-gradient(to bottom, #FF6B35, transparent);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .fade-up-1 { animation-delay: 0.1s; }
+    .fade-up-2 { animation-delay: 0.25s; }
+    .fade-up-3 { animation-delay: 0.4s; }
+
+    input[type="email"]::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+
+    input[type="email"]:focus {
+      outline: none;
+      border-color: #FF6B35;
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+    }
+
+    .btn-primary {
+      background: #FF6B35;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #E55A24;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .pain-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: border-color 0.2s;
+    }
+
+    .pain-card:hover {
+      border-color: rgba(255, 107, 53, 0.3);
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    #success-msg {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased">
+
+  <!-- Hero Section -->
+  <section class="px-5 pt-20 pb-16 max-w-2xl mx-auto text-center">
+
+    <!-- Badge -->
+    <div class="fade-up fade-up-1 inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-sm font-medium px-4 py-1.5 rounded-full mb-8">
+      <span class="w-2 h-2 bg-brand-orange rounded-full animate-pulse inline-block"></span>
+      Early Access — Limited Spots
+    </div>
+
+    <!-- Headline -->
+    <h1 class="fade-up fade-up-2 text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight text-white mb-5">
+      You did the work.<br />
+      <span class="text-brand-orange">Stop losing money</span> because you hate asking to get paid.
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="fade-up fade-up-3 text-lg sm:text-xl text-white/70 leading-relaxed max-w-xl mx-auto mb-10">
+      InvoiceHound automatically follows up on unpaid invoices for you — so you get paid without the awkward emails.
+    </p>
+
+    <!-- CTA Form -->
+    <div class="fade-up fade-up-3 mb-4">
+      <form
+        id="signup-form"
+        action="https://formspree.io/f/xqeyyrzl"
+        method="POST"
+        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+      >
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          class="flex-1 bg-white/8 border border-white/15 text-white rounded-xl px-4 py-3.5 text-base"
+          style="background: rgba(255,255,255,0.07);"
+        />
+        <button
+          type="submit"
+          class="btn-primary text-white font-semibold rounded-xl px-6 py-3.5 text-base whitespace-nowrap"
+        >
+          Get Early Access
+        </button>
+      </form>
+
+      <!-- Success message -->
+      <div id="success-msg" class="mt-4 text-brand-orange font-medium text-sm">
+        ✅ You're on the list! We'll reach out when we launch.
+      </div>
+
+      <p class="text-white/35 text-sm mt-3">
+        No credit card. No spam. Just early access when we launch.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Pain Points -->
+  <section class="px-5 pb-20 max-w-2xl mx-auto">
+    <h2 class="text-center text-white/40 text-xs font-semibold uppercase tracking-widest mb-8">Sound familiar?</h2>
+
+    <div class="flex flex-col gap-4">
+      <div class="pain-card rounded-2xl px-6 py-5 flex items-start gap-4">
+        <span class="text-2xl mt-0.5">😬</span>
+        <p class="text-white/80 text-base leading-relaxed">
+          You've got invoices sitting <strong class="text-white">30, 60, 90 days out</strong> because you don't want to be "that person"
+        </p>
+      </div>
+
+      <div class="pain-card rounded-2xl px-6 py-5 flex items-start gap-4">
+        <span class="text-2xl mt-0.5">📊</span>
+        <p class="text-white/80 text-base leading-relaxed">
+          You're manually tracking who owes what in a <strong class="text-white">spreadsheet (or your head)</strong>
+        </p>
+      </div>
+
+      <div class="pain-card rounded-2xl px-6 py-5 flex items-start gap-4">
+        <span class="text-2xl mt-0.5">💸</span>
+        <p class="text-white/80 text-base leading-relaxed">
+          You lose thousands every year — not because clients refuse to pay — <strong class="text-white">but because nobody reminded them</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-2xl mx-auto px-5 mb-20">
+    <div class="border-t border-white/8"></div>
+  </div>
+
+  <!-- How It Works -->
+  <section class="px-5 pb-20 max-w-2xl mx-auto">
+    <h2 class="text-center text-2xl sm:text-3xl font-bold text-white mb-3">How it works</h2>
+    <p class="text-center text-white/50 text-base mb-12">Three steps. Then it runs itself.</p>
+
+    <div class="flex flex-col gap-6">
+
+      <!-- Step 1 -->
+      <div class="step-card rounded-2xl px-6 py-6 flex items-start gap-5">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-orange flex items-center justify-center font-bold text-white text-base">1</div>
+        <div>
+          <h3 class="font-semibold text-white text-base mb-1">Connect your invoicing tool</h3>
+          <p class="text-white/55 text-sm leading-relaxed">Works with QuickBooks, FreshBooks, or Wave. One-click connect — no spreadsheet exports needed.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card rounded-2xl px-6 py-6 flex items-start gap-5">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-orange flex items-center justify-center font-bold text-white text-base">2</div>
+        <div>
+          <h3 class="font-semibold text-white text-base mb-1">Set your follow-up cadence</h3>
+          <p class="text-white/55 text-sm leading-relaxed">Choose Day 3, Day 7, Day 14 — or build your own. We write the messages. Professional, not pushy.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card rounded-2xl px-6 py-6 flex items-start gap-5">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-orange flex items-center justify-center font-bold text-white text-base">3</div>
+        <div>
+          <h3 class="font-semibold text-white text-base mb-1">InvoiceHound handles the rest</h3>
+          <p class="text-white/55 text-sm leading-relaxed">Sends professional follow-ups automatically. You get paid. You do nothing.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="px-5 pb-24 max-w-2xl mx-auto text-center">
+    <div class="glow-orange bg-navy-800 border border-white/8 rounded-3xl px-8 py-12" style="background: rgba(255,107,53,0.05); border-color: rgba(255,107,53,0.2);">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">
+        Get early access
+      </h2>
+      <p class="text-white/60 text-base mb-8 max-w-sm mx-auto">
+        Enter your email below and we'll reach out when InvoiceHound is ready to launch.
+      </p>
+
+      <form
+        id="signup-form-bottom"
+        action="https://formspree.io/f/xqeyyrzl"
+        method="POST"
+        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+      >
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          class="flex-1 border border-white/15 text-white rounded-xl px-4 py-3.5 text-base"
+          style="background: rgba(255,255,255,0.07);"
+        />
+        <button
+          type="submit"
+          class="btn-primary text-white font-semibold rounded-xl px-6 py-3.5 text-base whitespace-nowrap"
+        >
+          Get Early Access
+        </button>
+      </form>
+
+      <!-- Success message bottom -->
+      <div id="success-msg-bottom" style="display:none;" class="mt-4 text-brand-orange font-medium text-sm">
+        ✅ You're on the list! We'll reach out when we launch.
+      </div>
+
+      <p class="text-white/30 text-sm mt-4">
+        No credit card. No spam. Just early access when we launch.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="px-5 pb-10 text-center">
+    <p class="text-white/20 text-sm">© 2026 InvoiceHound. All rights reserved.</p>
+  </footer>
+
+  <!-- Form handling script -->
+  <script>
+    function handleForm(formId, successId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const email = form.querySelector('input[type="email"]').value;
+        const successMsg = document.getElementById(successId);
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Joining...';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+
+          if (response.ok) {
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Get Early Access';
+            alert('Something went wrong. Please try again.');
+          }
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Get Early Access';
+          alert('Something went wrong. Please try again.');
+        }
+      });
+    }
+
+    handleForm('signup-form', 'success-msg');
+    handleForm('signup-form-bottom', 'success-msg-bottom');
+  </script>
+
+</body>
+</html>
